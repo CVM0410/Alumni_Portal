@@ -157,7 +157,7 @@ echo "
 
 
 
-$connect = mysqli_connect("localhost", "Neha", "1235", "alumni");  
+$connect = mysqli_connect("localhost", "root", "", "alumni");  
 
 $contributions = (isset($_POST['contribution'])) ? $_POST['contribution'] : array(); 
 if (count($contributions) > 0) { 
