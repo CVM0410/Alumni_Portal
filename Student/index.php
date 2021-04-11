@@ -46,7 +46,7 @@ function active_button5() {
 	</div>
   
  <?php
-$connect = mysqli_connect("localhost", "Neha", "1235", "test");  
+$connect = mysqli_connect("localhost", "root", "", "test");  
 $query = "SELECT * FROM posts ORDER BY time_for_upload DESC";  
 $result = mysqli_query($connect, $query);
 while($row = mysqli_fetch_array($result)){
