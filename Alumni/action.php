@@ -1,5 +1,5 @@
 <?php  
- $connect = mysqli_connect("localhost", "Neha", "1235", "test");  
+ $connect = mysqli_connect("localhost", "root", "", "test");  
  if(isset($_POST["submit"]))  
  {  
       $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));  
