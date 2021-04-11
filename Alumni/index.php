@@ -1,8 +1,6 @@
 <?php
 session_start();
-#$info = array_values($_SESSION['userlogin']);
-#echo 'Heyy '.$info['3'];
-#echo (array_values($_SESSION['userlogin']))['3'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,7 +66,7 @@ function active_button5() {
 ?>
 <hr>
 <?php
-$connect = mysqli_connect("localhost", "Neha", "1235", "test");  
+$connect = mysqli_connect("localhost", "root", "", "test");  
 $query = "SELECT * FROM posts WHERE approval_status IS True ORDER BY time_for_upload DESC";  
 $result = mysqli_query($connect, $query);
 while($row = mysqli_fetch_array($result)){
