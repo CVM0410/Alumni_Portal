@@ -18,7 +18,7 @@
 	</div>
 
 <?php
-$connect = mysqli_connect("localhost", "Neha", "1235", "test");  
+$connect = mysqli_connect("localhost", "username", "password", "test");  
 $query = "SELECT * FROM posts  WHERE approval_status IS NULL ORDER BY time_for_upload ASC";  
 $result = mysqli_query($connect, $query);
 while($row = mysqli_fetch_array($result)){
