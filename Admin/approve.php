@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['adminlogin'])) {
+  header("location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,14 +24,14 @@
 	</div>
 
 <?php
-$connect = mysqli_connect("localhost", "root", "", "test");  
-$query = "SELECT * FROM posts  WHERE approval_status IS NULL ORDER BY time_for_upload ASC";  
+$connect = mysqli_connect("localhost", "Neha", "1235", "alumni");
+$query = "SELECT alumni_details.alumni_id, alumni_details.first_name, alumni_details.last_name, alumni_details.position, alumni_details.name_of_company, posts.* FROM alumni_details RIGHT JOIN posts ON alumni_details.alumni_id = posts.alumni_id WHERE posts.approval_status IS NULL ORDER BY posts.time_for_upload ASC";  
 $result = mysqli_query($connect, $query);
 while($row = mysqli_fetch_array($result)){
 echo'
 <div class="container">
 <div class="container" style="border: 1px solid #bfbfbf; margin-top: 70px;">
-  <a href="profile.html"><img src="resources\mProfile.png" class="rounded-circle" style="width: 55px; margin-top: 5px;"><b style="margin-right: 10px">Firstname Surname</b></a><a href="#">@Software Engineer, Capgemini</a>
+  <a href="profile.html"><img src="resources\mProfile.png" class="rounded-circle" style="width: 55px; margin-top: 5px;"><b style="margin-right: 10px">'.($row['first_name']).' '.($row['last_name']).'</b></a><a href="#">@'.($row['position']).', '.($row['name_of_company']).'</a>
   <p style="float: right; margin-top: 17px">'.date('d M Y',strtotime($row['time_for_upload'])).' At '.date('h.i A',strtotime($row['time_for_upload'])).'</p>
 </div>
 <div class="container" style="border: 1px solid #bfbfbf; background-color: #000000">
@@ -35,6 +41,7 @@ echo'
 </div>
 <div class="container"><p>'.($row['caption']).'</p></div>
 <form method="post" action="action2.php">
+<input type="text" placeholder="Reason If Not Approved" name="reason" style="float: right;" class="form-control"/><br><br>
 <input type="submit" name="action" value="Not Approve" class="btn btn-danger" style="float: right; margin-left: 20px"/>
 <input type="submit" name="action" value="Approve" class="btn btn-success" style="float: right;"/>
 <input type="hidden" name="id" value='.($row['id']).' />

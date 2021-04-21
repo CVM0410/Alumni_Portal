@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['studentlogin'])) {
+  header("location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,18 +49,20 @@ function active_button5() {
 }
 </script>
 	</div>
-
+<?php
+echo'
 <div class="container">
-	<div class="container" style="width: 10%; float: left;"><a href="profile.html"><img src="resources\mProfile.png" class="rounded-circle" style="width: 80px; margin-top: 15px;"></a></div>
-	<div class="container" style="width: 90%; float: left;"><a href="profile.html"><p style="margin-top: 40px; font-size: 17px"><b>Firstname Lastname</b><br>@30,Second Year,Computer B</p></a></div>
+	<div class="container" style="width: 10%; float: left;"><a href="profile.php"><img src="data:image/jpeg;base64,'.base64_encode((array_values($_SESSION['studentlogin']))['2']).'" class="rounded-circle" style="width: 80px; margin-top: 15px;"></a></div>
+	<div class="container" style="width: 90%; float: left;"><a href="profile.php"><p style="margin-top: 40px; font-size: 17px"><b>'.(array_values($_SESSION['studentlogin']))['3'].' '.(array_values($_SESSION['studentlogin']))['5'].'</b><br>@'.(array_values($_SESSION['studentlogin']))['9'].','.(array_values($_SESSION['studentlogin']))['7'].','.(array_values($_SESSION['studentlogin']))['6'].' '.(array_values($_SESSION['studentlogin']))['8'].'</p></a></div>
+</div>'
+?>
+<hr>
+<div class="container">
+	<a href="profile.php"><b style="font-size: 17px; color: #bfbfbf">Your Profile</b></a>
 </div>
 <hr>
 <div class="container">
-	<a href=""><b style="font-size: 17px; color: #bfbfbf">Edit Your Profile</b></a>
-</div>
-<hr>
-<div class="container">
-	<a href=""><b style="font-size: 17px; color: #bfbfbf">Logout</b></a>
+	<a href="logout.php"><b style="font-size: 17px; color: #bfbfbf">Logout</b></a>
 </div>
 <hr>
 </body>

@@ -1,15 +1,21 @@
+<?php
+session_start();
+if (!isset($_SESSION['adminlogin'])) {
+  header("location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>DMCE . Alumni Portal Admin</title>
-	<link rel="icon" href="resources/dmce_logo.jpeg" type="image/x-icon">
+  <title>DMCE . Alumni Portal Admin</title>
+  <link rel="icon" href="resources/dmce_logo.jpeg" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<style type="text/css">
-		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
     table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -26,14 +32,14 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
-	</style>
+  </style>
 </head>
 <body>
-	<div style="background-color: #000099; display: block; height: 75px; width: 100%; padding-top: 20px; padding-bottom: 20px">
-		<p style="color: #ffffff; font-size: 30px; font-family: playfair display SC"><img src="resources/dmce_logo.jpeg" style="float: left; height: 45px; margin-left: 20px"><b>DMCE Alumni Admin</b></p>
-	</div>
+  <div style="background-color: #000099; display: block; height: 75px; width: 100%; padding-top: 20px; padding-bottom: 20px">
+    <p style="color: #ffffff; font-size: 30px; font-family: playfair display SC"><img src="resources/dmce_logo.jpeg" style="float: left; height: 45px; margin-left: 20px"><b>DMCE Alumni Admin</b></p>
+  </div>
 
-	<div class="container" style="margin-top: 50px">
+  <div class="container" style="margin-top: 50px">
   <h3 style="margin-bottom: 30px">Start Filtering Alumni</h3>
   <form method="post">
 
@@ -145,7 +151,6 @@ echo "
     <center>
     <table style='margin: 20px 0px 20px 0px; width: 90%;'>
     <tr>
-        <th>ID</th>
         <th>Alumni ID</th>
         <th>Name Of Alumni</th>
         <th>Branch</th>
@@ -157,7 +162,7 @@ echo "
 
 
 
-$connect = mysqli_connect("localhost", "root", "", "alumni");  
+$connect = mysqli_connect("localhost", "Neha", "1235", "alumni");  
 
 $contributions = (isset($_POST['contribution'])) ? $_POST['contribution'] : array(); 
 if (count($contributions) > 0) { 
@@ -168,9 +173,8 @@ if (count($contributions) > 0) {
       while($row = mysqli_fetch_array($result)){
         echo "<tr>";
 
-        echo "<td>" . $row['id'] . " </td>";
-        echo "<td><a href='#'>" . $row['alumni_id'] . "</a> </td>";
-        echo "<td><a href='#'>" . $row['last_name']. "</a> </td>";
+        echo "<td><a href='profile.php'>" . $row['alumni_id'] . "</a> </td>";
+        echo "<td><a href='profile.php'>" . $row['last_name']. "</a> </td>";
         echo "<td>" . $row['branch'] . " </td>";
         echo "<td>" . $row['year_passed_out'] . " </td>";
         echo "</tr>";
@@ -186,9 +190,8 @@ if (count($branches) > 0) {
       while($row1 = mysqli_fetch_array($result1)){
         echo "<tr>";
 
-        echo "<td>" . $row1['id'] . " </td>";
-        echo "<td><a href='#'>" . $row1['alumni_id'] . "</a> </td>";
-        echo "<td><a href='#'>" . $row1['last_name']." ".$row1['first_name']." ".$row1['middle_name']. "</a> </td>";
+        echo "<td><a href='profile.php'>" . $row1['alumni_id'] . "</a> </td>";
+        echo "<td><a href='profile.php'>" . $row1['last_name']." ".$row1['first_name']." ".$row1['middle_name']. "</a> </td>";
         echo "<td>" . $row1['branch'] . " </td>";
         echo "<td>" . $row1['year_passed_out'] . " </td>";
         echo "</tr>";
@@ -204,9 +207,8 @@ if (count($year_passed_outs) > 0) {
       while($row2 = mysqli_fetch_array($result2)){
         echo "<tr>";
 
-        echo "<td>" . $row2['id'] . " </td>";
-        echo "<td><a href='#'>" . $row2['alumni_id'] . "</a> </td>";
-        echo "<td><a href='#'>" . $row2['last_name']." ".$row2['first_name']." ".$row2['middle_name']."</a> </td>";
+        echo "<td><a href='profile.php'>" . $row2['alumni_id'] . "</a> </td>";
+        echo "<td><a href='profile.php'>" . $row2['last_name']." ".$row2['first_name']." ".$row2['middle_name']."</a> </td>";
         echo "<td>" . $row2['branch'] . " </td>";
         echo "<td>" . $row2['year_passed_out'] . " </td>";
         echo "</tr>";
@@ -223,9 +225,8 @@ if (count($genders) > 0) {
       while($row3 = mysqli_fetch_array($result3)){
         echo "<tr>";
 
-        echo "<td>" . $row3['id'] . " </td>";
-        echo "<td><a href='#'>" . $row3['alumni_id'] . "</a> </td>";
-        echo "<td><a href='#'>" . $row3['last_name']." ".$row3['first_name']." ".$row3['middle_name']."</a> </td>";
+        echo "<td><a href='profile.php'>" . $row3['alumni_id'] . "</a> </td>";
+        echo "<td><a href='profile.php'>" . $row3['last_name']." ".$row3['first_name']." ".$row3['middle_name']."</a> </td>";
         echo "<td>" . $row3['branch'] . " </td>";
         echo "<td>" . $row3['year_passed_out'] . " </td>";
         echo "</tr>";
@@ -242,9 +243,8 @@ if ($_POST['submit'] && $_POST['alumni_id']) {
   while($row4 = mysqli_fetch_array($res)){
         echo "<tr>";
 
-        echo "<td>" . $row4['id'] . " </td>";
-        echo "<td><a href='#'>" . $row4['alumni_id'] . "</a> </td>";
-        echo "<td><a href='#'>" . $row4['last_name']." ".$row4['first_name']." ".$row4['middle_name']."</a> </td>";
+        echo "<td><a href='profile.php'>" . $row4['alumni_id'] . "</a> </td>";
+        echo "<td><a href='profile.php'>" . $row4['last_name']." ".$row4['first_name']." ".$row4['middle_name']."</a> </td>";
         echo "<td>" . $row4['branch'] . " </td>";
         echo "<td>" . $row4['year_passed_out'] . " </td>";
         echo "</tr>";

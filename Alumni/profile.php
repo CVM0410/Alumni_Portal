@@ -19,7 +19,7 @@ if (!isset($_SESSION['userlogin'])) {
 </head>
 <body>
 	<?php
-echo'
+	echo'
 <br>
 <h3>Profile Picture: </h3>
 <img src="data:image/jpeg;base64,'.base64_encode((array_values($_SESSION['userlogin']))['2']).'" class="rounded-circle" style="width: 80px; margin-top: 15px;">
@@ -42,14 +42,14 @@ Name Of Company: '.(array_values($_SESSION['userlogin']))['17'].'<br>
 Position: '.(array_values($_SESSION['userlogin']))['18'].'<br>
 Placement: '.(array_values($_SESSION['userlogin']))['19'].'<br>
 Appointment Letter: <br>
-<img src="data:image/jpeg;base64,'.base64_encode((array_values($_SESSION['userlogin']))['20']).'" class="rounded-circle" style="width: 80px; margin-top: 15px;"><br>
+<img src="data:image/jpeg;base64,'.base64_encode((array_values($_SESSION['userlogin']))['20']).'" style="width: 80px; margin-top: 15px;"><br>
 Span Of Working: '.(array_values($_SESSION['userlogin']))['21'].' Years<br>
 Package: '.(array_values($_SESSION['userlogin']))['22'].' L.P.A.<br>
 Facebook Profile Link: <a href="">'.(array_values($_SESSION['userlogin']))['23'].'</a><br>
 LinekIn Profile Link: <a href="">'.(array_values($_SESSION['userlogin']))['24'].'</a><br>
 Twitter Profile Link: <a href="">'.(array_values($_SESSION['userlogin']))['25'].'</a><br>
-Your Contribution To College: '.(array_values($_SESSION['userlogin']))['26'].'<br>
-';
+Your Contribution To College: '.(array_values($_SESSION['userlogin']))['26'].'<br>';
+
 	?>
 </body>
 </html>

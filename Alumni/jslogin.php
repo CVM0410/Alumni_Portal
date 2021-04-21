@@ -11,7 +11,12 @@ if($result){
     $user = $stmtselect->fetch(PDO::FETCH_ASSOC);
     if($stmtselect->rowCount() > 0){
         $_SESSION['userlogin'] = $user;
+        if ((array_values($_SESSION['userlogin']))['28'] == '1') {
         header("Location:index.php");
+    }
+    else{
+    	echo "You're Not An Approved User!!";
+    }
     }else{
         header('location: login.php?error=No User Found That Combo!!');
     }

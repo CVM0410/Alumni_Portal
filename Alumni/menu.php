@@ -59,7 +59,7 @@ echo'
 
 <hr>
 <div class="container">
-	<a href=""><b style="font-size: 17px; color: #bfbfbf">Edit Your Profile</b></a>
+	<a href="profile_edit.php"><b style="font-size: 17px; color: #bfbfbf">Edit Your Profile</b></a>
 </div>
 <hr>
 <div class="container">

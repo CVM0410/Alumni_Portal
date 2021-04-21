@@ -18,8 +18,8 @@
   </div>
 
 <div class="container" style="margin-top: 50px">
-  <div class="form-group">
   <center><h3>Admin Registration</h3></center>
+  <form action="process.php" method="post" enctype="multipart/form-data">
   <div class="form-group">
       <label for="image">Profile Picture:</label>
       <input type="file" style="border: none;" class="form-control" id="image" name="image" required="required">
@@ -29,16 +29,42 @@
     <div class="input-group-prepend">
       <span class="input-group-text">Person</span>
     </div>
-    <input type="text" class="form-control" placeholder="First Name" required="required">
-    <input type="text" class="form-control" placeholder="Middle Name" required="required">
-    <input type="text" class="form-control" placeholder="Last Name" required="required">
+    <input type="text" class="form-control" placeholder="First Name" name="first_name" required="required">
+    <input type="text" class="form-control" placeholder="Middle Name" name="middle_name" required="required">
+    <input type="text" class="form-control" placeholder="Last Name" name="last_name" required="required">
   </div>
-</div>
+
 <div class="form-group">
-  <label>Post In DMCE</label>
-      <input type="text" class="form-control" id="admin_post" placeholder="Post In DMCE" name="admin_post">
+      <label for="department">Department: </label>
+      <select class="form-control" name="department" required="required">
+        <option>Select</option>
+        <option>Humanities And Science</option>
+        <option>Chemical Engineering</option>
+        <option>Civil Engineering</option>
+        <option>Computer Engineering</option>
+        <option>Electronics Engineering</option>
+        <option>Information Technology Engineering</option>
+        <option>Mechanical Engineering</option>
+      </select>
+  </div>
+
+    <div class="form-group">
+  <label>Email:</label>
+      <input type="Email" class="form-control" id="Email" placeholder="Email" name="email">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <div class="form-group">
+  <label>Password:</label>
+      <input type="Password" class="form-control" id="password" placeholder="Password" name="password">
+    </div>
+
+    <div class="form-group">
+  <label>Confirm Password:</label>
+      <input type="Password" class="form-control" id="password1" placeholder="Confirm Password" name="password1">
+    </div>
+
+    <button type="submit" value="submit" name="submit" id="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>
 </body>
 </html>

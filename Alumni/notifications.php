@@ -49,18 +49,36 @@ function active_button5() {
 }
 </script>
 	</div>
-
+<?php
+$alumni_id = (array_values($_SESSION['userlogin']))['1'];
+$connect = mysqli_connect("localhost", "Neha", "1235", "alumni");
+$query = "SELECT * FROM posts WHERE alumni_id = '$alumni_id' ORDER BY time_for_upload DESC";  
+$result = mysqli_query($connect, $query);
+while($row = mysqli_fetch_array($result)){
+	if ($row['approval_status']== '1') {
+		echo'
 <div class="container" style="background-color: #ccf5ff">
-	<div class="container" style="width: 10%; float: left;"><a href="profile.html"><img src="resources\mProfile.png" class="rounded-circle" style="width: 55px; margin-top: 5px;"></a></div>
-	<div class="container" style="width: 90%; float: left;"><p style="margin-top: 20px; font-size: 17px">DMCE Admin approved your post and it is posted on DMCE Alumni website on 22-01-2021 at 9.00 AM</p></div>
+	<div class="container" style="width: 10%; float: left;"><a href="profile.html"><img src="resources\mProfile.png" class="rounded-circle" 
+
+style="width: 55px; margin-top: 5px;"></a></div>
+	<div class="container" style="width: 90%; float: left;"><p style="margin-top: 20px; font-size: 17px">DMCE Admin approved your post and it is posted on DMCE Alumni website on '.date('d M Y',strtotime($row['time_of_approval'])).' at '.date('h.i A',strtotime($row['time_of_approval'])).'</p></div>
 </div>
-<center><hr style="width: 90%"></center>
+<center><hr style="width: 90%"></center>';
+}
+else if ($row['approval_status']== '0') {
+	echo'
 <div class="container">
-	<div class="container" style="width: 10%; float: left;"><a href="profile.html"><img src="resources\mProfile.png" class="rounded-circle" style="width: 55px; margin-top: 5px;"></a></div>
-	<div class="container" style="width: 90%; float: left;"><p style="margin-top: 20px; font-size: 17px">DMCE Admin approved your post and it is posted on DMCE Alumni website on 22-01-2021 at 9.00 AM</p></div>
+	<div class="container" style="width: 10%; float: left;"><a href="profile.html"><img src="resources\mProfile.png" class="rounded-circle" 
+
+style="width: 55px; margin-top: 5px;"></a></div>
+	<div class="container" style="width: 90%; float: left;"><p style="margin-top: 20px; font-size: 17px">DMCE Admin rejected your post for the reason '.$row['reason'].' on '.date('d M Y',strtotime($row['time_of_approval'])).' at '.date('h.i A',strtotime($row['time_of_approval'])).'</p></div>
 	<hr>
 </div>
-<center><hr style="width: 90%"></center>
+<center><hr style="width: 90%"></center>';
+}
+}
+?>
+
 
 </body>
 </html>

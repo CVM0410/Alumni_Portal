@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['studentlogin'])) {
+  header("location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -46,7 +52,7 @@ function active_button5() {
 	</div>
   
  <?php
-$connect = mysqli_connect("localhost", "root", "", "test");  
+$connect = mysqli_connect("localhost", "Neha", "1235", "test");  
 $query = "SELECT * FROM posts ORDER BY time_for_upload DESC";  
 $result = mysqli_query($connect, $query);
 while($row = mysqli_fetch_array($result)){

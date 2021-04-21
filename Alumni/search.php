@@ -49,27 +49,53 @@ function active_button5() {
 }
 </script>
 	</div>
+<form method="post">
+<button type="submit" value="1992" name="batch" class="btn btn-primary">Batch Of 1992 Passed Out</button>
+<button type="submit" value="1993" name="batch" class="btn btn-primary">Batch Of 1993 Passed Out</button>
+<button type="submit" value="1994" name="batch" class="btn btn-primary">Batch Of 1994 Passed Out</button>
+<button type="submit" value="1995" name="batch" class="btn btn-primary">Batch Of 1995 Passed Out</button>
+<button type="submit" value="1996" name="batch" class="btn btn-primary">Batch Of 1996 Passed Out</button>
+<button type="submit" value="1997" name="batch" class="btn btn-primary">Batch Of 1997 Passed Out</button>
+<button type="submit" value="1998" name="batch" class="btn btn-primary">Batch Of 1998 Passed Out</button>
+<button type="submit" value="1999" name="batch" class="btn btn-primary">Batch Of 1999 Passed Out</button>
+<button type="submit" value="2000" name="batch" class="btn btn-primary">Batch Of 2000 Passed Out</button>
+<button type="submit" value="2001" name="batch" class="btn btn-primary">Batch Of 2001 Passed Out</button>
+<button type="submit" value="2002" name="batch" class="btn btn-primary">Batch Of 2002 Passed Out</button>
+<button type="submit" value="2003" name="batch" class="btn btn-primary">Batch Of 2003 Passed Out</button>
+<button type="submit" value="2004" name="batch" class="btn btn-primary">Batch Of 2004 Passed Out</button>
+<button type="submit" value="2005" name="batch" class="btn btn-primary">Batch Of 2005 Passed Out</button>
+<button type="submit" value="2006" name="batch" class="btn btn-primary">Batch Of 2006 Passed Out</button>
+<button type="submit" value="2007" name="batch" class="btn btn-primary">Batch Of 2007 Passed Out</button>
+<button type="submit" value="2008" name="batch" class="btn btn-primary">Batch Of 2008 Passed Out</button>
+<button type="submit" value="2009" name="batch" class="btn btn-primary">Batch Of 2009 Passed Out</button>
+<button type="submit" value="2010" name="batch" class="btn btn-primary">Batch Of 2010 Passed Out</button>
+<button type="submit" value="2011" name="batch" class="btn btn-primary">Batch Of 2011 Passed Out</button>
+<button type="submit" value="2012" name="batch" class="btn btn-primary">Batch Of 2012 Passed Out</button>
+<button type="submit" value="2013" name="batch" class="btn btn-primary">Batch Of 2013 Passed Out</button>
+<button type="submit" value="2014" name="batch" class="btn btn-primary">Batch Of 2014 Passed Out</button>
+<button type="submit" value="2015" name="batch" class="btn btn-primary">Batch Of 2015 Passed Out</button>
+<button type="submit" value="2016" name="batch" class="btn btn-primary">Batch Of 2016 Passed Out</button>
+<button type="submit" value="2017" name="batch" class="btn btn-primary">Batch Of 2017 Passed Out</button>
+<button type="submit" value="2018" name="batch" class="btn btn-primary">Batch Of 2018 Passed Out</button>
+<button type="submit" value="2019" name="batch" class="btn btn-primary">Batch Of 2019 Passed Out</button>
+<button type="submit" value="2020" name="batch" class="btn btn-primary">Batch Of 2020 Passed Out</button>
+</form>
 
-<form class="form-inline" action="/action_page.php" style="padding-right: 20px">
-		    <center>
-		    	<div style="margin-top: 10px">
-		    <input class="form-control mr-sm-4" type="text" placeholder="Search person..." style="width: 75%;">
-		    <button class="btn btn-primary" type="submit" style="padding: 0px; border: none;"><img src="resources\button.png" style="width: 40px; height: 40px"></button>
-		</div>
-		</center>
-		<hr>
-		</form>
 
 <?php
-echo'
-
-<div class="container">
-<a href="">
-	<div class="container" style="width: 10%; float: left;"><img src="resources\mProfile.png" class="rounded-circle" style="width: 55px; margin-top: 5px;"></div>
-	<div class="container" style="width: 90%; float: left;"><p style="margin-top: 20px; font-size: 17px">Firstname Lastname @Capgemini, CEO</p></div>
-	</a>
-</div>
-<hr>'
+$connect = mysqli_connect("localhost", "Neha", "1235", "alumni");
+if (isset($_POST['batch'])) {
+	$batch = $_POST['batch'];
+	$query = "SELECT * FROM alumni_details WHERE year_passed_out = $batch";
+	$result = mysqli_query($connect, $query);
+      while($row = mysqli_fetch_array($result)){
+      	echo $row['first_name'].' '.$row['middle_name'].' '.$row['last_name'].' '.$row['branch'].'<br>';
+      }
+}
 ?>
+
+
+
+
 </body>
 </html>
